@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Ember.js Cookbook &raquo; Recipe Template</title>
+    <title>Ember.js Cookbook &raquo; Debugging</title>
     <link type="image/x-icon" rel="shortcut icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
   </head>
@@ -13,33 +13,31 @@
 
       <section class="content">
 
-        <article class="content-block"><h2 id='sample_recipe_template'>Sample recipe template</h2>
+        <article class="content-block recipe-content">
+          <h1>Debugging</h1>
+          <h2 id='debugging_checklist'>Debugging checklist</h2>
 
-<p>Create a new <code>my-recipe.md</code> file and use this text as a start.</p>
-<div class='highlight'><pre><code class='text'>---
-layout: recipe
-title: Title of The Recipe
-chapter: Chapter Name
----
-## Problem
+<p>Make sure you didn&#8217;t specify <code>id</code> as an attribute in your model</p>
+<div class='highlight'><pre><code class='javascript'><span class='nx'>App</span><span class='p'>.</span><span class='nx'>User</span> <span class='o'>=</span> <span class='nx'>DS</span><span class='p'>.</span><span class='nx'>Model</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>({</span>
+  <span class='c1'>// THIS IS WRONG!</span>
+  <span class='nx'>id</span><span class='o'>:</span> <span class='nx'>DS</span><span class='p'>.</span><span class='nx'>attr</span><span class='p'>(</span><span class='s2'>&quot;string&quot;</span><span class='p'>),</span>
 
-You have a problem.
+  <span class='nx'>username</span><span class='o'>:</span> <span class='nx'>DS</span><span class='p'>.</span><span class='nx'>attr</span><span class='p'>(</span><span class='s2'>&quot;string&quot;</span><span class='p'>)</span>
+<span class='p'>});</span>
+</code></pre></div>
+<p>the model should look like this instead</p>
+<div class='highlight'><pre><code class='javascript'><span class='nx'>App</span><span class='p'>.</span><span class='nx'>User</span> <span class='o'>=</span> <span class='nx'>DS</span><span class='p'>.</span><span class='nx'>Model</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>({</span>
+  <span class='nx'>username</span><span class='o'>:</span> <span class='nx'>DS</span><span class='p'>.</span><span class='nx'>attr</span><span class='p'>(</span><span class='s2'>&quot;string&quot;</span><span class='p'>)</span>
+<span class='p'>});</span>
+</code></pre></div>
+<p>since Ember Data will handle the <code>id</code> automatically.</p>
+        </article>
 
-## Solution
-
-Do this about it.
-
-## Discussion
-
-Here&#39;s why.
-</code></pre></div></article>
-
-        <footer class="footer content-block">
-          <p>Don't see a recipe you want? See an entire missing chapter? Add it yourself by reading the <a href="/contributing">Contributor's Guide</a>, or request it by adding it to <a href="/wanted-recipes">Wanted Recipes</a>.</p>
+        <footer class="footer">
+          <p>Is this recipe wrong, incomplete, or non idiomatic? Help fix it by reading the <a href="/contributing">Contributor's Guide</a>!</p>
           <p>This book is a fork of the original <a href="http://coffeescriptcookbook.com/">Coffeescript Cookbook</a></p>
           <a href="/license"><img src="/images/cc_by_badge.png" /></a>
         </footer>
-
       </section>
 
     </section>
@@ -158,7 +156,7 @@ Here&#39;s why.
                 
                   
                     
-                      <li class="list-item recipe"><a class="recipe-title" href="/chapters/ember_data/debugging">Debugging</a></li>
+                      <li class="list-item recipe page-active"><a class="recipe-title" href="/chapters/ember_data/debugging">Debugging</a></li>
                     
                   
                 
